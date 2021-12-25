@@ -22,7 +22,7 @@ bool is_number(const std::string &s)
     return !s.empty() && it == s.end();
 }
 
-void ToDoController::AddToDo(string title, string description, time_t start, time_t end)
+void ToDoController::AddToDo(string title, string description, time_t start, time_t end, bool isDone)
 {
     vector<vector<string>> todos = ReadCsv();
 
@@ -45,4 +45,41 @@ void ToDoController::AddToDo(string title, string description, time_t start, tim
     vec.push_back(dateToString(end));
 
     AddData(vec);
+}
+
+void ToDoController::UpdateToDo(int id, string title, string description, bool isDone)
+{
+    vector<vector<string>> todos = ReadCsv();
+
+    WriteFile("");
+    for (auto &todo : todos)
+    {
+        if (todo[0] == to_string(id))
+        {
+            todo[1] = title;
+            todo[2] = description;
+            todo[3] = "";
+            todo[4] = "";
+            todo[5] = isDone ? "true" : "false";
+        }
+
+        AddData(todo);
+    }
+}
+
+vector<string> ToDoController::FindByIdToDo(int id)
+{
+    vector<vector<string>> todos = ReadCsv();
+    vector<string> todoResult;
+
+    string idString = to_string(id);
+
+    for (auto &todo : todos)
+    {
+        if (todo[0] != idString)
+            continue;
+        return todo;
+    }
+
+    return todoResult;
 }

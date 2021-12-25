@@ -18,7 +18,11 @@ private:
 public:
     using CsvFile::CsvFile;
 
-    void AddToDo(string title, string description, time_t start, time_t end);
+    void AddToDo(string title, string description, time_t start, time_t end, bool isDone);
+
+    void UpdateToDo(int id, string title, string description, bool isDone);
+
+    vector<string> FindByIdToDo(int id);
 };
 
 #endif
