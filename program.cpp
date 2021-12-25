@@ -1,15 +1,12 @@
 #include <iostream>
 #include <fstream>
-#include "classes/CsvFile.cpp"
+#include "classes/ToDoController.h"
 using namespace std;
 
 int main()
 {
-  CsvFile file("todo.txt");
-  vector<string> dataList;
-  dataList.push_back("Hello");
-  dataList.push_back("World");
-  dataList.push_back("Abolfazl");
-  file.AddData(dataList);
+  time_t now = time(0);
+  ToDo file("todo.csv");
+  file.AddToDo("Title", "Desc", now, now);
   return 0;
 }
