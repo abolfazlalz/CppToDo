@@ -4,7 +4,6 @@
 
 string ToDoController::dateToString(time_t time)
 {
-    // return result;
     tm *ltm = localtime(&time);
     string result = to_string(1900 + ltm->tm_year) + "/";
     result += to_string(1 + ltm->tm_mon) + "/";

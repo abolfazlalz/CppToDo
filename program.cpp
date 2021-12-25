@@ -1,12 +1,18 @@
 #include <iostream>
 #include <fstream>
-#include "classes/ToDoController.h"
+#include "classes/ToDoController.cpp"
+#include "classes/ToDo.cpp"
 using namespace std;
 
 int main()
 {
   time_t now = time(0);
-  ToDo file("todo.csv");
-  file.AddToDo("Title", "Desc", now, now);
+  ToDo todo;
+  todo.setCategory("todo");
+  todo.setTitle("New work");
+  todo.setDescription("About this work");
+  todo.setStartTime(now);
+  todo.setEndTime(now);
+  todo.save();
   return 0;
 }

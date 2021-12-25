@@ -1,5 +1,5 @@
-#ifndef ToDo_H
-#define ToDo_H
+#ifndef ToDoController_H
+#define ToDoController_H
 
 #include "iostream"
 #include <vector>
