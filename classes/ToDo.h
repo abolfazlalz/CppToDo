@@ -11,7 +11,7 @@ using namespace std;
 class ToDo
 {
 private:
-    int _id;
+    int _id = -1;
     string _title;
     string _description;
     time_t _startTime;

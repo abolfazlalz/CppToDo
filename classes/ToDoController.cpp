@@ -38,11 +38,13 @@ void ToDoController::AddToDo(string title, string description, time_t start, tim
                 id = stoi(lastIdStr) + 1;
         }
     }
+
     vec.push_back(to_string(id));
     vec.push_back(title);
     vec.push_back(description);
     vec.push_back(dateToString(start));
     vec.push_back(dateToString(end));
+    vec.push_back(isDone ? "true" : "false");
 
     AddData(vec);
 }
@@ -52,14 +54,15 @@ void ToDoController::UpdateToDo(int id, string title, string description, bool i
     vector<vector<string>> todos = ReadCsv();
 
     WriteFile("");
+    time_t now = time(0);
     for (auto &todo : todos)
     {
         if (todo[0] == to_string(id))
         {
             todo[1] = title;
             todo[2] = description;
-            todo[3] = "";
-            todo[4] = "";
+            todo[3] = dateToString(now);
+            todo[4] = dateToString(now);
             todo[5] = isDone ? "true" : "false";
         }
 
@@ -82,4 +85,10 @@ vector<string> ToDoController::FindByIdToDo(int id)
     }
 
     return todoResult;
+}
+
+vector<vector<string>> ToDoController::Get()
+{
+    vector<vector<string>> todos = ReadCsv();
+    return todos;
 }

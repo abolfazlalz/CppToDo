@@ -41,6 +41,10 @@ ToDo ToDo::findById(int id, string category)
 
     todo.setId(stoi(data[0]));
     todo.setTitle(data[1]);
+    todo.setCategory(category);
+    time_t now = time(0);
+    todo.setStartTime(now);
+    todo.setEndTime(now);
     todo.setDescription(data[2]);
     todo.isDone(data[5] == "true" ? true : false);
     return todo;

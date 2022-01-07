@@ -22,6 +22,8 @@ public:
 
     void UpdateToDo(int id, string title, string description, bool isDone);
 
+    vector<vector<string>> Get();
+
     vector<string> FindByIdToDo(int id);
 };
 
